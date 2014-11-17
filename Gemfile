@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 
 gem 'rabl-rails'
 gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'apipie-rails'
