@@ -67,12 +67,12 @@ module Api
         end
       end
 
-      # api :DELETE, '/players/:id', 'Destroy an Team'
-      # def destroy
-      #   @player = Player.find(params[:id])
-      #   @player.destroy
-      #   head :no_content
-      # end
+      api :DELETE, '/players/:id', 'Destroy an Team'
+      def destroy
+        @player = Player.find(params[:id])
+        @player.destroy
+        head :no_content
+      end
 
       private
 
