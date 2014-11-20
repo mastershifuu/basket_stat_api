@@ -1,5 +1,8 @@
 class Player < ActiveRecord::Base
   belongs_to :team
+  has_many :player_times
+  has_many :game_events
+
   enum position: {
       point_guard: 1,
       shooting_guard: 2,
