@@ -59,7 +59,7 @@ class Player < ActiveRecord::Base
       steels: events_by_code(game_id, GameEvent.event_codes[:stl]),
       fouls: events_by_code(game_id, GameEvent.event_codes[:pf]),
       fouls_commited: events_by_code(game_id, GameEvent.event_codes[:pfc]),
-      effeciency: efficiency(game_id)
+      efficiency: efficiency(game_id)
     }
   end
 
