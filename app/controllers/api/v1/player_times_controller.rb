@@ -2,6 +2,13 @@ module Api
   module V1
     class PlayerTimesController < ApiController
 
+      api :GET, '/player_times/:id', 'Show player time'
+      param :id, :number, :required => true
+      def show
+        @player_time = PlayerTime.find(params[:id])
+        respond_with @player_time
+      end
+
       api :POST, '/player_times', 'Create "player in game" event'
       param :player_time, Hash, :required => true do
         param :game_id, :number, :required => true, :desc => 'ID of the current game'
@@ -10,25 +17,27 @@ module Api
         # param :out_time, String, :required => false, :desc => 'Time of game when player get out'
       end
       def create
-        @event = PlayerTime.new(player_time_params)
-        if @event.save
-          render json: @event, status: :created
+        @player_time = PlayerTime.new(player_time_params)
+        if @player_time.save
+          respond_with @player_time, status: :created
         else
-          render json: @event.errors, status: :unprocessable_entity
+          render json: @player_time.errors, status: :unprocessable_entity
         end
       end
 
-      api :PATCH, '/player_times/:id', "Update player time entry and set 'game out' time"
+      api :PATCH, '/player_times', "Update player time entry and set 'game out' time"
       param :player_time, Hash, :required => true do
+        param :game_id, :number, :required => true, :desc => 'ID of the current game'
+        param :player_id, :number, :required => true, :desc => 'ID of current player'
         param :out_time, String, :required => true, :desc => 'Time of game when player get out'
       end
       def update
-        @event = PlayerTime.find(params[:id])
-        if @event.update_attributes(player_time_params)
+        @player_time = PlayerTime.to_update(player_time_params[:game_id], player_time_params[:player_id]).first
+        if @player_time.update_attributes(player_time_params)
           # head :no_content
-          render json: @event, status: :accepted
+          respond_with @player_time, status: :accepted
         else
-          render json: @event.errors, status: :unprocessable_entity
+          render json: @player_time.errors, status: :unprocessable_entity
         end
       end
 

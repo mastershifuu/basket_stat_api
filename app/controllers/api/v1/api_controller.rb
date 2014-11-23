@@ -4,8 +4,13 @@ module Api
       #before_filter :authenticate_user_from_token!
       respond_to :json
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+      rescue_from Exception, with: :server_error
 
       private
+
+      def server_error(error)
+        render json: { error: error.message }, status: :internal_server_error
+      end
 
       def record_not_found
         render json: {error: '404 Not Found'}, status: :not_found

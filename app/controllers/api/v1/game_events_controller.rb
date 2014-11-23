@@ -6,13 +6,13 @@ module Api
       param :game_event, Hash, :required => true do
         param :game_id, :number, :required => true, :desc => 'ID of the current game'
         param :player_id, :number, :required => true, :desc => 'ID of the current player'
-        param :event_code, GameEvents.event_code.keys, :required => true, :desc => 'Event code'
+        param :event_code, GameEvent.event_codes.keys, :required => true, :desc => 'Event code'
         param :event_time, String, :required => true, :decs => 'Event time'
       end
       def create
-        @event = GameEvents.new(game_event_params)
+        @event = GameEvent.new(game_event_params)
         if @event.save
-          render json: @event, status: :created
+          respond_with @event, status: :created
         else
           render json: @event.errors, status: :unprocessable_entity
         end

@@ -41,3 +41,7 @@ gem 'rabl-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'apipie-rails'
+
+group :development do
+  gem 'pry-rails'
+end

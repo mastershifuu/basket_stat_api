@@ -30,7 +30,7 @@ module Api
         param :team_id, :number, :required => false, :desc => 'Id of team'
         param :first_name, String, :required => true, :desc => 'First name of the player'
         param :last_name, String, :required => true, :desc => 'Last name of the player'
-        param :birth_date, Date, :required => false, :desc => 'Birth Date of the player'
+        param :birth_date, String, :required => false, :desc => 'Birth Date of the player in format YYYY-MM-DD'
         param :height, :number, :required => true, :desc => 'Height of the player'
         param :weight, :number, :required => true, :desc => 'Weight of the player'
         param :position, Player.positions.keys, :required => true, :desc => 'Position of the player'
@@ -51,15 +51,26 @@ module Api
         param :team_id, :number, :required => false, :desc => 'Id of team'
         param :first_name, String, :required => false, :desc => 'First name of the player'
         param :last_name, String, :required => false, :desc => 'Last name of the player'
-        param :birth_date, Date, :required => false, :desc => 'Birth Date of the player'
+        param :birth_date, String, :required => false, :desc => 'Birth Date of the player'
         param :height, :number, :required => false, :desc => 'Height of the player'
         param :weight, :number, :required => false, :desc => 'Weight of the player'
         param :position, Player.positions.keys, :required => false, :desc => 'Position of the player'
         param :number, :number, :required => false, :desc => 'Number of player'
       end
+      description <<-EOS
+=== Example
+curl -X PATCH -H "x-api: true" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '{
+  "player":
+    {
+      "first_name": "Vasya 222",
+      "birth_date": "1991-10-24"
+    }
+}' http://localhost:3000/api/v1/players/2
+
+      EOS
       def update
         @player = Player.find(params[:id])
-        if @player.update_attributes(team_params)
+        if @player.update_attributes(player_params)
           # head :no_content
           render json: @player, status: :accepted
         else
