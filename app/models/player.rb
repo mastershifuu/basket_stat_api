@@ -13,6 +13,10 @@ class Player < ActiveRecord::Base
 
   # scope :events_by_code, ->(game_id, event_code) { where(game_id: game_id, event_code: event_code)}
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def events_by_code(game_id, event_code)
     game_events.where(game_id: game_id, event_code: event_code).count
   end
