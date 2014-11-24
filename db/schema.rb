@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121122426) do
+ActiveRecord::Schema.define(version: 20141124073822) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 20141121122426) do
     t.datetime "updated_at"
   end
 
+  add_index "game_events", ["game_id"], name: "index_game_events_on_game_id", using: :btree
+  add_index "game_events", ["player_id"], name: "index_game_events_on_player_id", using: :btree
+
   create_table "games", force: true do |t|
     t.date     "date"
     t.integer  "home_team_id"
@@ -71,6 +74,9 @@ ActiveRecord::Schema.define(version: 20141121122426) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "player_times", ["game_id"], name: "index_player_times_on_game_id", using: :btree
+  add_index "player_times", ["player_id"], name: "index_player_times_on_player_id", using: :btree
 
   create_table "players", force: true do |t|
     t.integer  "team_id"
