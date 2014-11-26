@@ -11,7 +11,7 @@ module Api
 
       api :GET, '/teams/:id', 'Show Team info'
       formats [:json]
-      param :id, :number, :required => :true
+      param :id, :number, :required => true
       def show
         @team = Team.find(params[:id])
         render json: @team, status: :ok
@@ -26,8 +26,8 @@ module Api
       api :POST, '/teams', 'Create Team'
       formats [:json]
       param :team, Hash, :required => true, :action_aware => true do
-        param :name, String, :required => :true, :desc => 'Name of Team'
-        param :description, String, :required => :false, :desc => 'Short description of Team'
+        param :name, String, :required => true, :desc => 'Name of Team'
+        param :description, String, :required => true, :desc => 'Short description of Team'
       end
       def create
         @team = Team.new(team_params)
@@ -44,7 +44,7 @@ module Api
       param :id, :number, :required => true
       param :team, Hash, :required => true, :action_aware => true do
         param :name, String, :required => false, :desc => 'Name of Team'
-        param :description, String, :required => :false, :desc => 'Short description of Team'
+        param :description, String, :required => false, :desc => 'Short description of Team'
       end
       def update
         @team = Team.find(params[:id])
