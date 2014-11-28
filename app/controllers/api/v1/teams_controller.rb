@@ -2,15 +2,14 @@ module Api
   module V1
     class TeamsController < ApiController
 
+
       api :GET, '/teams', 'Show list of teams'
-      formats [:json]
       def index
         @teams = Team.all
         render json: @teams
       end
 
       api :GET, '/teams/:id', 'Show Team info'
-      formats [:json]
       param :id, :number, :required => true
       def show
         @team = Team.find(params[:id])
@@ -24,7 +23,6 @@ module Api
       end
 
       api :POST, '/teams', 'Create Team'
-      formats [:json]
       param :team, Hash, :required => true, :action_aware => true do
         param :name, String, :required => true, :desc => 'Name of Team'
         param :description, String, :required => true, :desc => 'Short description of Team'
@@ -40,7 +38,6 @@ module Api
       end
 
       api :PATCH, '/teams/:id', 'Create Team'
-      formats [:json]
       param :id, :number, :required => true
       param :team, Hash, :required => true, :action_aware => true do
         param :name, String, :required => false, :desc => 'Name of Team'
