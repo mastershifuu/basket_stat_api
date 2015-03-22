@@ -42,6 +42,9 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'apipie-rails'
 
+gem 'ember-rails'
+gem 'ember-source', '~> 1.10.0'
+
 group :development do
   gem 'pry-rails'
 end
