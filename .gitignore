@@ -17,3 +17,6 @@
 
 /.idea
 /atlassian-ide-plugin.xml
+
+# Ignore vagrant files
+/.vagrant
