@@ -2,9 +2,10 @@
 #= require jquery_ujs
 #= require ember
 #= require ember-data
+#= require ember-template-compiler
 #= require_self
-#= require basket_stat_api
+#= require basket_stat
 
 # for more details see: http://emberjs.com/guides/application/
-window.BasketStatApi = Ember.Application.create()
+window.BasketStat = Ember.Application.create()
 

@@ -1,5 +1,5 @@
 # For more information see: http://emberjs.com/guides/routing/
 
-BasketStatApi.Router.map ()->
+BasketStat.Router.map ()->
   # @resource('posts')
 
