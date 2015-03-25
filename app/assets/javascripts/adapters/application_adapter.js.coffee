@@ -1,5 +1,4 @@
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 
-BasketStat.ApplicationAdapter = DS.ActiveModelAdapter.extend({
-
-})
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend
+  namespace: 'api/v1'

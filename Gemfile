@@ -45,6 +45,8 @@ gem 'apipie-rails'
 gem 'ember-rails'
 gem 'ember-source', '~> 1.10.0'
 
+gem 'bootstrap-sass', '~> 3.3.4'
+
 group :development do
   gem 'pry-rails'
 end

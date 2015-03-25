@@ -1,5 +1,6 @@
 # For more information see: http://emberjs.com/guides/routing/
 
-BasketStat.Router.map ()->
-  # @resource('posts')
+App.Router.map ()->
+  @resource 'teams'
+  @resource 'players'
 

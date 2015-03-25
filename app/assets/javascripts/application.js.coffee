@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require bootstrap-sprockets
 #= require ember
 #= require ember-data
 #= require ember-template-compiler
@@ -7,5 +8,5 @@
 #= require basket_stat
 
 # for more details see: http://emberjs.com/guides/application/
-window.BasketStat = Ember.Application.create()
+window.App = Ember.Application.create()
 

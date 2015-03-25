@@ -14,12 +14,6 @@ module Api
       def show
         @team = Team.find(params[:id])
         render json: @team, status: :ok
-        # if @team.present?
-        #   render json: @team, status: :ok
-        # else
-        #   render json: @team, status: :not_found
-        # end
-
       end
 
       api :POST, '/teams', 'Create Team'
