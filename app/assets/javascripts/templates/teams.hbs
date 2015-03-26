@@ -1,1 +1,14 @@
-<h2>Teams</h2>
+<div class="container-fluid">
+  <h3>Teams</h3>
+
+  <div class="row">
+    <div class="list-group col-md-3">
+      {{#each team in model}}
+        <a href="#" class="list-group-item">
+          <p>{{team.name}}</p>
+          <span class="small">{{team.description}}</span>
+        </a>
+      {{/each}}
+    </div>
+  </div>
+</div>
