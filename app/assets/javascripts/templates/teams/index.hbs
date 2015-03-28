@@ -1,0 +1,8 @@
+<div class="list-group col-md-3">
+  {{#each team in model}}
+    {{#link-to 'teams.show' team class="list-group-item"}}
+      <p>{{team.name}}</p>
+      <span class="small">{{team.description}}</span>
+    {{/link-to}}
+  {{/each}}
+</div>
