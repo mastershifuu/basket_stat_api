@@ -7,7 +7,7 @@ App.Player = DS.Model.extend({
   height: DS.attr(),
   birthDate: DS.attr('date'),
 
-  team: DS.belongsTo('team'),
+  team: DS.belongsTo('team', { async: true}),
 
   fullName: (function () {
     return this.get('firstName') + ' ' + this.get('lastName');

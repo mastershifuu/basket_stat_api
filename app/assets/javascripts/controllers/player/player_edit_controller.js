@@ -1,4 +1,5 @@
-App.PlayerEditController = Ember.ObjectController.extend({
+App.PlayerEditController = Ember.Controller.extend({
+  needs: ['player'],
   onSave: function (player) {
     return this.transitionToRoute('player.show', player);
   },
@@ -6,7 +7,7 @@ App.PlayerEditController = Ember.ObjectController.extend({
   actions: {
     cancel: function () {
       this.model.rollback();
-      return this.transitionToRoute('teams.show', this.model.team);
+      return this.transitionToRoute('teams.show', this.model.get('team'));
     },
 
     save: function () {

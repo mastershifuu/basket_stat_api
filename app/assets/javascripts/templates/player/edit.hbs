@@ -1,1 +1,10 @@
 EDIT player {{model.fullName}}
+
+<form {{action 'save' on="submit"}} class="form-horizontal">
+  <legend>Edit Player</legend>
+
+  {{partial "player/edit_fields"}}
+
+  {{partial "shared/form_buttons"}}
+
+</form>
