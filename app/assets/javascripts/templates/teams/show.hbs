@@ -7,13 +7,14 @@
 
   </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <h5>{{name}}</h5>
 
       <p>{{description}}</p>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       {{#link-to 'teams.edit' model class="btn btn-default btn-sm"}}Edit Team{{/link-to}}
+      {{#link-to 'player.new' (query-params team_id=model.id) class="btn btn-primary btn-sm"}}New Player{{/link-to}}
     </div>
   </div>
 

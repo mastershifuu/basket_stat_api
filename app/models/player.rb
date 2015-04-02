@@ -11,6 +11,9 @@ class Player < ActiveRecord::Base
       center: 5
   }
 
+  validates :team_id, :first_name, :last_name, :number,
+            :height, :weight,  presence: true
+
   # scope :events_by_code, ->(game_id, event_code) { where(game_id: game_id, event_code: event_code)}
 
   def full_name

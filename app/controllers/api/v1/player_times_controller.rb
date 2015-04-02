@@ -10,10 +10,10 @@ module Api
       end
 
       api :POST, '/player_times', 'Create "player in game" event'
-      param :player_time, Hash, :required => true do
-        param :game_id, :number, :required => true, :desc => 'ID of the current game'
-        param :player_id, :number, :required => true, :desc => 'ID of current player'
-        param :in_time, String, :required => true, :desc => 'Time when player come IN game'
+      param :player_time, Hash do
+        param :game_id, :number, :desc => 'ID of the current game'
+        param :player_id, :number, :desc => 'ID of current player'
+        param :in_time, String, :desc => 'Time when player come IN game'
         # param :out_time, String, :required => false, :desc => 'Time of game when player get out'
       end
       def create
@@ -26,10 +26,10 @@ module Api
       end
 
       api :PATCH, '/player_times', "Update player time entry and set 'game out' time"
-      param :player_time, Hash, :required => true do
-        param :game_id, :number, :required => true, :desc => 'ID of the current game'
-        param :player_id, :number, :required => true, :desc => 'ID of current player'
-        param :out_time, String, :required => true, :desc => 'Time of game when player get out'
+      param :player_time, Hash do
+        param :game_id, :number, :desc => 'ID of the current game'
+        param :player_id, :number, :desc => 'ID of current player'
+        param :out_time, String, :desc => 'Time of game when player get out'
       end
       def update
         @player_time = PlayerTime.to_update(player_time_params[:game_id], player_time_params[:player_id]).first

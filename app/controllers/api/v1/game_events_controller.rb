@@ -3,11 +3,11 @@ module Api
     class GameEventsController < ApiController
 
       api :POST, '/game_events', 'Create "game event"'
-      param :game_event, Hash, :required => true do
-        param :game_id, :number, :required => true, :desc => 'ID of the current game'
-        param :player_id, :number, :required => true, :desc => 'ID of the current player'
-        param :event_code, GameEvent.event_codes.keys, :required => true, :desc => 'Event code'
-        param :event_time, String, :required => true, :decs => 'Event time'
+      param :game_event, Hash do
+        param :game_id, :number, :desc => 'ID of the current game'
+        param :player_id, :number, :desc => 'ID of the current player'
+        param :event_code, GameEvent.event_codes.keys, :desc => 'Event code'
+        param :event_time, String, :decs => 'Event time'
       end
       def create
         @event = GameEvent.new(game_event_params)

@@ -1,25 +1,36 @@
 <legend>Player Info</legend>
-<dl class="dl-horizontal">
-  <dt>Team</dt>
-  <dd>{{team.name}}</dd>
+<div class="row">
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>Team</dt>
+      <dd>{{team.name}}</dd>
 
-  <dt>Player Name</dt>
-  <dd>{{fullName}}</dd>
+      <dt>Player Name</dt>
+      <dd>{{fullName}}</dd>
 
-  <dt>Number</dt>
-  <dd>{{number}}</dd>
+      <dt>Number</dt>
+      <dd>{{number}}</dd>
 
-  <dt>Position</dt>
-  <dd>{{position}}</dd>
+      <dt>Position</dt>
+      <dd>{{position}}</dd>
 
-  <dt>Height</dt>
-  <dd>{{height}}</dd>
+      <dt>Height</dt>
+      <dd>{{height}}</dd>
 
-  <dt>Weight</dt>
-  <dd>{{weight}}</dd>
+      <dt>Weight</dt>
+      <dd>{{weight}}</dd>
 
-  <dt>Date of Birth</dt>
-  <dd>{{birthDate}}</dd>
+      <dt>Date of Birth</dt>
+      <dd>{{birthDate}}</dd>
 
+    </dl>
+  </div>
 
-</dl>
+</div>
+<div class="row">
+  <div class="col-md-4 text-center">
+
+    {{#link-to 'player.edit' model class="btn btn-primary btn-sm"}}Edit Player{{/link-to}}
+    {{#link-to 'teams.show' model.team class="btn btn-default btn-sm"}}Back to Team{{/link-to}}
+  </div>
+</div>

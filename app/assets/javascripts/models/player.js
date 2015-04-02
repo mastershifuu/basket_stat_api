@@ -9,7 +9,9 @@ App.Player = DS.Model.extend({
 
   team: DS.belongsTo('team', { async: true}),
 
-  fullName: (function () {
+  fullName: function () {
     return this.get('firstName') + ' ' + this.get('lastName');
-  }).property('firstName', 'lastName')
+  }.property('firstName', 'lastName'),
+
+  teamName: Ember.computed.alias('team.name')
 });

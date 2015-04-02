@@ -19,10 +19,10 @@ module Api
 
       api :POST, '/games', 'Create game'
       formats [:json]
-      param :game, Hash, required: true do
-        param :date, String, required: true, desc: 'Date of the game in format YYYY-MM-DD'
-        param :home_team_id, :number, required: true, desc: 'ID of the Home team'
-        param :away_team_id, :number, required: true, desc: 'ID of the Away team'
+      param :game, Hash do
+        param :date, String, desc: 'Date of the game in format YYYY-MM-DD'
+        param :home_team_id, :number, desc: 'ID of the Home team'
+        param :away_team_id, :number, desc: 'ID of the Away team'
       end
       def create
         @game = Game.new(game_params)

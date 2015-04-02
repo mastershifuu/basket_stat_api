@@ -27,14 +27,14 @@ module Api
       api :POST, '/players', 'Create Player'
       formats [:json]
       param :player, Hash, :required => true, :action_aware => true do
-        param :team_id, :number, :required => false, :desc => 'Id of team'
-        param :first_name, String, :required => true, :desc => 'First name of the player'
-        param :last_name, String, :required => true, :desc => 'Last name of the player'
-        param :birth_date, String, :required => false, :desc => 'Birth Date of the player in format YYYY-MM-DD'
-        param :height, :number, :required => true, :desc => 'Height of the player'
-        param :weight, :number, :required => true, :desc => 'Weight of the player'
-        param :position, Player.positions.keys, :required => true, :desc => 'Position of the player'
-        param :number, :number, :required => true, :desc => 'Number of player'
+        param :team_id, :number, :desc => 'Id of team'
+        param :first_name, String, :desc => 'First name of the player'
+        param :last_name, String, :desc => 'Last name of the player'
+        param :birth_date, String, :desc => 'Birth Date of the player in format YYYY-MM-DD'
+        param :height, :number, :desc => 'Height of the player'
+        param :weight, :number, :desc => 'Weight of the player'
+        param :position, Player.positions.keys, :desc => 'Position of the player'
+        param :number, :number, :desc => 'Number of player'
       end
       def create
         @player = Player.new(player_params)
