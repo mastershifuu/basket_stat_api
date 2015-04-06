@@ -15,8 +15,9 @@
         {{#link-to "teams" tagName="li"}}
           <a {{bind-attr href="view.href"}}>Teams</a>
         {{/link-to}}
-        <li><a href="#">Games</a></li>
-
+        {{#link-to "games" tagName="li"}}
+          <a {{bind-attr href="view.href"}}>Games</a>
+        {{/link-to}}
       </ul>
     </div>
   </div>

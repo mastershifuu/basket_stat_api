@@ -10,6 +10,8 @@ App.Router.map(function () {
     this.route('edit', { path: ':player_id/edit' });
     this.route('new');
     return this.route('show', { path: ':player_id/show' });
-
   });
+  this.resource('games', function(){
+    this.route('new')
+  })
 });
