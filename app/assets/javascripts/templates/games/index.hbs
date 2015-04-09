@@ -16,10 +16,17 @@
         <th>Date</th>
         <th>Home</th>
         <th>Away</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
       {{#each model as |game|}}
+        <tr>
+          <td>{{game.shortDate}}</td>
+          <td>{{game.homeTeam.name}}</td>
+          <td>{{game.awayTeam.name}}</td>
+          <th></th>
+        </tr>
       {{else}}
         <tr>
           <td colspan="3"> No games (((</td>
