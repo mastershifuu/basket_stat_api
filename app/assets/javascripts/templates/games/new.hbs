@@ -18,7 +18,7 @@
     optionValuePath='content.id'
     optionLabelPath="content.name"
     prompt="Home team ..."
-    selectionBinding="model.homeTeam.content"
+    selection=selectedHomeTeam
     required=true}}
     </div>
   </div>
@@ -33,8 +33,10 @@
       optionValuePath='content.id'
       optionLabelPath="content.name"
       prompt="Away team ..."
-      selectionBinding="model.awayTeam.content"
+      selection=selectedAwayTeam
       required=true}}
     </div>
   </div>
+
+  {{partial "shared/form_buttons"}}
 </form>
