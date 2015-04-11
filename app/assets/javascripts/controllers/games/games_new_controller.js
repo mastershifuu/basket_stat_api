@@ -7,6 +7,23 @@ App.GamesNewController = Ember.ObjectController.extend({
     return this.store.findAll('team')
   }.property(),
 
+  filterTeams: function(teams){
+    var team = this.get(teams);
+    if (Ember.isPresent(team)) {
+      return this.get('allTeams').rejectBy('id', team.id);
+    } else {
+      return this.get('allTeams');
+    }
+  },
+
+  homeTeams: function(){
+    return this.filterTeams('selectedAwayTeam');
+  }.property('selectedAwayTeam'),
+
+  awayTeams: function () {
+    return this.filterTeams('selectedHomeTeam');
+  }.property('selectedHomeTeam'),
+
   homeTeamDidChange: function (sender, key, value, rev){
     var team = this.get('selectedHomeTeam');
     if (!Ember.isEmpty(team)) {

@@ -14,7 +14,7 @@
     {{view "select"
     class="form-control"
     name=homeTeam
-    content=allTeams
+    content=homeTeams
     optionValuePath='content.id'
     optionLabelPath="content.name"
     prompt="Home team ..."
@@ -29,7 +29,7 @@
       {{view "select"
       class="form-control"
       name=awayTeam
-      content=allTeams
+      content=awayTeams
       optionValuePath='content.id'
       optionLabelPath="content.name"
       prompt="Away team ..."
