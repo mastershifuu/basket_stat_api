@@ -22,7 +22,7 @@
       <tbody>
       {{#each model as |game|}}
         <tr>
-          <td>{{game.shortDate}}</td>
+          <td>{{formattedDate game.date}}</td>
           <td>{{game.homeTeam.name}}</td>
           <td>{{game.awayTeam.name}}</td>
           <th></th>

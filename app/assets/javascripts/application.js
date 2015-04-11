@@ -2,7 +2,9 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require moment
+//= require moment_duration_format
 //= require pikaday
+
 //= require ember
 //= require ember-data
 //= require ember-template-compiler
