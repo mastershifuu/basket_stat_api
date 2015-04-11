@@ -33,20 +33,20 @@ module Api
         end
       end
 
-      api :post, '/games/:id', 'Set started_at in current game '
+      api :post, '/games/:game_id/start', 'Set started_at in current game '
       formats [:json]
-      param :id, :number, :required => true
+      param :game_id, :number, :required => true
       def start
-        @game = Game.find(params[:id])
+        @game = Game.find(params[:game_id])
         @game.start
         render json: @game
       end
 
-      api :post, '/games/:id', 'Set started_at in current game '
+      api :post, '/games/:game_id/finish', 'Set started_at in current game '
       formats [:json]
-      param :id, :number, :required => true
+      param :game_id, :number, :required => true
       def finish
-        @game = Game.find(params[:id])
+        @game = Game.find(params[:game_id])
         @game.finish
         render json: @game
       end

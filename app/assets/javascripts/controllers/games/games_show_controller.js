@@ -3,8 +3,7 @@ App.GamesShowController = Ember.ObjectController.extend({
 
   actions: {
     gameStarted: function(){
-      this.set('gameStartedAt', moment());
-      Ember.Logger.info("game started:", this.get('gameStartedAt'));
+      this.get('content.start');
     }
   }
 });

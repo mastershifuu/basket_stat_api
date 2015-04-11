@@ -24,16 +24,16 @@ App.GamesNewController = Ember.ObjectController.extend({
     return this.filterTeams('selectedHomeTeam');
   }.property('selectedHomeTeam'),
 
-  homeTeamDidChange: function (sender, key, value, rev){
+  homeTeamDidChange: function (){
     var team = this.get('selectedHomeTeam');
-    if (!Ember.isEmpty(team)) {
+    if (Ember.isPresent(team)) {
       this.model.set('homeTeam', team);
     }
   }.observes('selectedHomeTeam'),
 
-  awayTeamDidChange: function (sender, key, value, rev) {
+  awayTeamDidChange: function () {
     var team = this.get('selectedAwayTeam');
-    if (!Ember.isEmpty(team)) {
+    if (Ember.isPresent(team)) {
       this.model.set('awayTeam', team);
     }
   }.observes('selectedAwayTeam'),

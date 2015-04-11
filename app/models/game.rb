@@ -5,10 +5,10 @@ class Game < ActiveRecord::Base
   validates :away_team_id, :home_team_id, :date, presence: true
 
   def start
-    self.update_attribute :started_at, DateTime.now if started_at.empty?
+    self.update_attribute :started_at, DateTime.now if started_at.blank?
   end
 
   def finish
-    self.update_attribute :finished_at, DateTime.now if finished_at.empty?
+    self.update_attribute :finished_at, DateTime.now if finished_at.blank?
   end
 end

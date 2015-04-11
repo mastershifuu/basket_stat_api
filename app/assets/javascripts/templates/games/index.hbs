@@ -25,11 +25,17 @@
           <td>{{formattedDate game.date}}</td>
           <td>{{game.homeTeam.name}}</td>
           <td>{{game.awayTeam.name}}</td>
-          <th></th>
+          <td>
+            {{#if game.isFinished}}
+              {{#link-to 'games.stats' game class='btn btn-default btn-sm'}}Statistics{{/link-to}}
+            {{else }}
+              {{#link-to 'games.show' game class='btn btn-primary btn-sm'}}Process{{/link-to}}
+            {{/if}}
+          </td>
         </tr>
       {{else}}
         <tr>
-          <td colspan="3"> No games (((</td>
+          <td colspan="4"> No games (((</td>
         </tr>
       {{/each}}
       </tbody>

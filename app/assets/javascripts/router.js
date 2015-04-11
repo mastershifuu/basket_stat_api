@@ -14,5 +14,6 @@ App.Router.map(function () {
   this.resource('games', function(){
     this.route('new');
     this.route('show', { path: ':game_id'});
+    this.route('stats', {path: ':game_id/stats'});
   })
 });

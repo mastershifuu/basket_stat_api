@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :teams
       resources :players
-      resources :games
+      resources :games do
+        post '/start', to: 'games#start'
+        post '/finish', to: 'games#finish'
+      end
       resources :game_events
       resources :player_times
       patch 'player_times' => 'player_times#update'
