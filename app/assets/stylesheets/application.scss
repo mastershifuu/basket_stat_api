@@ -13,6 +13,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.btn {
-  margin: 2px;
+@import "pikaday/pikaday";
+@import "pikaday/theme";
+
+//.btn {
+//  margin: 2px;
+//}
+
+.big-text{
+  font-size: 3.5em;
+  font-weight: bold;
 }
