@@ -43,7 +43,7 @@ gem 'devise'
 gem 'apipie-rails'
 
 gem 'ember-rails'
-gem 'ember-source', '~> 1.10.0'
+gem 'ember-source', '~> 1.11.0'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'momentjs-rails', '~> 2.9.0'

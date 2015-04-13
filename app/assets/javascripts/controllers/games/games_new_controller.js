@@ -1,4 +1,4 @@
-App.GamesNewController = Ember.ObjectController.extend({
+App.GamesNewController = Ember.Controller.extend({
   //needs: ['games'],
   selectedHomeTeam: null,
   selectedAwayTeam: null,

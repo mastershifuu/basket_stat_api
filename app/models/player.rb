@@ -47,7 +47,7 @@ class Player < ActiveRecord::Base
 
   def stats(game_id)
     {
-      played_time: played_time(game_id),
+      # played_time: played_time(game_id),
       points: points(game_id),
       free_throw_attempts: events_by_code(game_id, GameEvent.event_codes[:fta]),
       free_throw_made: events_by_code(game_id, GameEvent.event_codes[:ftm]),
@@ -81,7 +81,7 @@ class Player < ActiveRecord::Base
         1.5 * events_by_code(game_id, GameEvent.event_codes[:fga3]) -
         0.8 * events_by_code(game_id, GameEvent.event_codes[:fta]) -
         1.4 * events_by_code(game_id, GameEvent.event_codes[:los]) -
-        events_by_code(game_id, GameEvent.event_codes[:pf]) ) / (played_time(game_id)/60.0)
+        events_by_code(game_id, GameEvent.event_codes[:pf]) ) #/ (played_time(game_id)/60.0)
     eff.round(2)
   end
 

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 28e8a8f36640c64fc4163c86cc31d716862c5b37
+  revision: 6bce892a2cca9c56b5aff917b06f2bb12ffacfb9
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -52,7 +52,7 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (5.1.8)
+    autoprefixer-rails (5.1.8.1)
       execjs
       json
     barber (0.9.0)
@@ -70,10 +70,10 @@ GEM
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.4.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
+    coffee-script-source (1.9.1.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -86,16 +86,16 @@ GEM
     ember-handlebars-template (0.1.5)
       barber (>= 0.9.0)
       sprockets (>= 2.1, < 3.1)
-    ember-rails (0.18.1)
+    ember-rails (0.18.2)
       active_model_serializers
       ember-data-source (>= 1.0.0.beta.5)
       ember-handlebars-template (>= 0.1.1, < 1.0)
       ember-source (>= 1.1.0)
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.10.0)
+    ember-source (1.11.1)
     erubis (2.7.0)
-    execjs (2.5.0)
+    execjs (2.5.2)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.2.0)
@@ -109,7 +109,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
-    jbuilder (2.2.12)
+    jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -194,7 +194,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    therubyracer (0.12.1)
+    therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
@@ -218,7 +218,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   ember-rails
-  ember-source (~> 1.10.0)
+  ember-source (~> 1.11.0)
   jbuilder (~> 2.0)
   jquery-rails
   momentjs-rails (~> 2.9.0)

@@ -1,7 +1,8 @@
 <div class="text-center">
   <span class="big-text">{{formattedTime}}</span>
   {{#if isNotStarted}}
-    <button id="btnStart" class="btn btn-large btn-primary btn-block" type="button" {{action 'start'}}>
+    <button id="btnStart" class="btn btn-large btn-primary btn-block"
+            type="button" {{action 'start'}} disabled={{startDisabled}}>
       Start
     </button>
   {{else}}

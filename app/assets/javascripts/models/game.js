@@ -31,4 +31,6 @@ App.Game = DS.Model.extend({
     this.customAction('finish');
   }.property('id')
 
+
+
 });

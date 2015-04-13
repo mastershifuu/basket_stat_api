@@ -6,6 +6,8 @@ App.GameTimerComponent = Ember.Component.extend({
   mils: null,
   paused: false,
   count: 0,
+  currentTime: null,
+  startDisabled: false,
 
   isNotStarted: function(){
     return Ember.isBlank(this.get('startTime'))
@@ -14,6 +16,10 @@ App.GameTimerComponent = Ember.Component.extend({
   formattedTime: function () {
     return moment.duration(this.get('mils')).format('hh:mm:ss', {trim: false})
   }.property('mils'),
+
+  timeDidChanged: function(){
+    this.set('currentTime', this.get('formattedTime'))
+  }.observes('formattedTime'),
 
   clock: function () {
     var self = this;
