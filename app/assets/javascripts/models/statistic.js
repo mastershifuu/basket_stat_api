@@ -1,6 +1,7 @@
-App.PlayerStat = DS.Model.extend({
-  player: DS.belongsTo('player'),
-  game: DS.belongsTo('game'),
+App.Statistic = DS.Model.extend({
+  player: DS.belongsTo('player', {async: true}),
+  game: DS.belongsTo('game', {async: true}),
+  team: DS.belongsTo('team', {async: true}),
   points: DS.attr(),
   freeThrowAttempts: DS.attr(),
   freeThrowMade: DS.attr(),

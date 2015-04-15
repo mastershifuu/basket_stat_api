@@ -21,8 +21,10 @@ Rails.application.routes.draw do
       resources :player_times
       patch 'player_times' => 'player_times#update'
 
-      get '/statistics/:game_id/player/:player_id' => 'statistics#player'
-      get '/statistics/:game_id/team/:team_id' => 'statistics#team'
+      # resources :statistics
+      get '/statistics', to: 'statistics#show'
+      # get '/statistics/:game_id/player/:player_id' => 'statistics#player'
+      # get '/statistics/:game_id/team/:team_id' => 'statistics#team'
     end
   end
 
