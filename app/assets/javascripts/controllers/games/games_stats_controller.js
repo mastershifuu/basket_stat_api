@@ -1,0 +1,1 @@
+App.GamesStatsController = Ember.Controller.extend({});

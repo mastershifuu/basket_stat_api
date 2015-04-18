@@ -6,7 +6,7 @@ module Api
       formats [:json]
       def show
         @stats = Statistic.where(game_id: params[:game_id])
-        respond_with @stats
+        respond_with @stats, include: ['games', 'teams']
       end
 
     end

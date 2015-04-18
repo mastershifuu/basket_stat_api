@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.1'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -37,11 +37,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rabl-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'apipie-rails'
-
+gem 'active_model_serializers', '~> 0.9.3'
 gem 'ember-rails'
 gem 'ember-source', '~> 1.11.0'
 

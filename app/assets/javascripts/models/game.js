@@ -1,10 +1,12 @@
 App.Game = DS.Model.extend({
-  homeTeam: DS.belongsTo('team', { async: true }),
-  awayTeam: DS.belongsTo('team', { async: true }),
+  homeTeam: DS.belongsTo('team'),
+  awayTeam: DS.belongsTo('team'),
 
   date: DS.attr('date'),
   startedAt: DS.attr('date'),
   finishedAt: DS.attr('date'),
+
+  statistics: DS.hasMany('statistic'),
 
   isFinished: function(){
     return Ember.isPresent(this.get('finishedAt'));
