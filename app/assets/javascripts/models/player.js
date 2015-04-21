@@ -13,5 +13,9 @@ App.Player = DS.Model.extend({
     return this.get('firstName') + ' ' + this.get('lastName');
   }.property('firstName', 'lastName'),
 
+  nameWithNumber: function (){
+    return "#%@1, %@2".fmt(this.get('number'), this.get('fullName'))
+  }.property('fullName', 'number'),
+
   teamName: Ember.computed.alias('team.name')
 });

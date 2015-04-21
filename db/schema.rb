@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408171750) do
+ActiveRecord::Schema.define(version: 20150415180219) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -92,6 +92,32 @@ ActiveRecord::Schema.define(version: 20150408171750) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
+  end
+
+  create_table "statistics", force: true do |t|
+    t.integer "player_id"
+    t.integer "game_id"
+    t.integer "team_id"
+    t.time    "played_time"
+    t.integer "points"
+    t.integer "free_throw_attempts"
+    t.integer "free_throw_made"
+    t.decimal "free_throw_percent",   precision: 10, scale: 0
+    t.integer "field_goal_attempts"
+    t.integer "field_goal_made"
+    t.decimal "field_goal_percent",   precision: 10, scale: 0
+    t.integer "three_point_attempts"
+    t.integer "three_point_made"
+    t.decimal "three_point_percent",  precision: 10, scale: 0
+    t.integer "assists"
+    t.integer "blockshots"
+    t.integer "offencive_rebounds"
+    t.integer "deffencive_rebounds"
+    t.integer "losses"
+    t.integer "steels"
+    t.integer "fouls"
+    t.integer "fouls_commited"
+    t.decimal "efficiency",           precision: 10, scale: 0
   end
 
   create_table "teams", force: true do |t|

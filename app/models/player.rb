@@ -2,6 +2,7 @@ class Player < ActiveRecord::Base
   belongs_to :team
   has_many :player_times
   has_many :game_events
+  has_many :statistics
 
   enum position: {
       point_guard: 1,
@@ -43,6 +44,11 @@ class Player < ActiveRecord::Base
     attempts_count = events_by_code(game_id, event_code_attempt)
     made_count = events_by_code(game_id, event_code_made)
     (made_count.to_f / (attempts_count + made_count)) * 100.0
+  end
+
+  def save_stats(game_id)
+    stat = Statistic.new({ player_id: self.id, game_id: game_id, team_id: self.team_id })
+    stat.update_attributes stats(game_id)
   end
 
   def stats(game_id)

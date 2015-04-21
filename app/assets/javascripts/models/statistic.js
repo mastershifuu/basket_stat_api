@@ -1,6 +1,7 @@
-App.PlayerStat = DS.Model.extend({
+App.Statistic = DS.Model.extend({
   player: DS.belongsTo('player'),
   game: DS.belongsTo('game'),
+  team: DS.belongsTo('team'),
   points: DS.attr(),
   freeThrowAttempts: DS.attr(),
   freeThrowMade: DS.attr(),
@@ -19,5 +20,6 @@ App.PlayerStat = DS.Model.extend({
   steels: DS.attr(),
   fouls: DS.attr(),
   foulsCommited: DS.attr(),
-  efficiency: DS.attr()
+  efficiency: DS.attr(),
+
 });

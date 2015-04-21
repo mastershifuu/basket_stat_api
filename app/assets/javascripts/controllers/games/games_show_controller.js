@@ -18,9 +18,9 @@ App.GamesShowController = Ember.Controller.extend({
   availableHomePlayers: function(){
     return this.store.find(
         'player',
-        {team_id: this.get('.model.homeTeam.id')}
+        {team_id: this.get('model.homeTeam.id')}
     );
-  }.property(),
+  }.property('model.homeTeam'),
 
   canNotStart: function(){
     var players = this.get('inGamePlayers');

@@ -48,6 +48,7 @@ module Api
       def finish
         @game = Game.find(params[:game_id])
         @game.finish
+
         render json: @game
       end
 
