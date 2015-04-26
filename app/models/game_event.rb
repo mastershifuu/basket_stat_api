@@ -19,5 +19,6 @@ class GameEvent < ActiveRecord::Base
     pfc: 14
   }
 
-  validates :event_code, :event_time, :game_id, :player_id, presence: true
+  validates :event_time, :game_id, :player_id, presence: true
+  validates :event_code, inclusion: {in: GameEvent.event_codes}
 end

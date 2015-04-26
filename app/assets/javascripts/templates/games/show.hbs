@@ -34,10 +34,10 @@
           <td>
             {{view 'select'
               class="form-control"
-              content=availableHomePlayers
+              content=filteredHomePlayers
               optionValuePath="content.id"
               optionLabelPath="content.number"
-              name=player.home.id
+              optionDisabledPath="content.selected"
               selection=player.home
               prompt='Select player...'
             }}

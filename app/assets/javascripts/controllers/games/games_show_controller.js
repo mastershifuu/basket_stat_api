@@ -16,11 +16,21 @@ App.GamesShowController = Ember.Controller.extend({
   ]),
 
   availableHomePlayers: function(){
-    return this.store.find(
-        'player',
-        {team_id: this.get('model.homeTeam.id')}
-    );
+    return this.get('model.homeTeam.players')
   }.property('model.homeTeam'),
+
+  filteredHomePlayers: function(){
+    var selected = this.get('inGamePlayers').getEach('home');
+    var filtered = this.get('availableHomePlayers');
+    filtered.forEach(function (player) {
+       if (selected.contains(player)){
+         player.set('selected', true);
+       } else {
+         player.set('selected', false);
+       }
+    });
+    return filtered;
+  }.property('inGamePlayers.@each.home'),
 
   canNotStart: function(){
     var players = this.get('inGamePlayers');
@@ -28,6 +38,22 @@ App.GamesShowController = Ember.Controller.extend({
       return Ember.isEmpty(item.get('home'))
     });
   }.property('inGamePlayers.@each.home'),
+
+  homePlayerDidChange: function(){
+    var players = this.get('inGamePlayers');
+    players.forEach(function(obj){
+      player = obj.get('home');
+      oldPlayer = obj.get('oldHome');
+      if ( player != oldPlayer) {
+        if (Ember.isPresent(oldPlayer)) {
+          Ember.Logger.info('OUT: ', oldPlayer.get('number'));
+        }
+        Ember.Logger.info('IN: ', player.get('number'));
+        obj.set('oldHome', player);
+      }
+    });
+
+  }.observes('inGamePlayers.@each.home'),
 
   actions: {
     gameStarted: function(){
