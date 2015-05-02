@@ -1,5 +1,3 @@
-<legend>Game statistic: {{model.homeTeam.name}} - {{model.awayTeam.name}} ({{formattedDate model.date}} )</legend>
-
 <div class="row">
   <div class="col-md-12">
     <table class="table">
@@ -28,7 +26,7 @@
       </tr>
       </thead>
       <tbody>
-      {{#each model.statistics as |row|}}
+      {{#each stats as |row|}}
         <tr>
           <td>{{row.player.nameWithNumber}}</td>
           <td>{{row.points}}</td>
