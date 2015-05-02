@@ -69,6 +69,26 @@ App.GamesShowController = Ember.Controller.extend({
     });
   }.observes('inGamePlayers.@each.away'),
 
+  pointsEvent: function(player, eventType){
+    var points = 0;
+    switch(eventType){
+      case 'ftm':
+        points = 1;
+        break;
+      case 'fgm':
+        points = 2;
+        break;
+      case 'fgm3':
+        points = 3;
+        break;
+    }
+    if (player.get('team.id') == this.get('model.homeTeam.id')){
+      this.incrementProperty('points.home', points);
+    } else {
+      this.incrementProperty('points.away', points);
+    }
+  },
+
   actions: {
     gameStarted: function(){
       // starting game
@@ -86,6 +106,7 @@ App.GamesShowController = Ember.Controller.extend({
       var time = this.get('timerValue');
       if (Ember.isPresent(player) && Ember.isPresent(time)) {
         //Em.Logger.info('player: ', player, 'type: ', type);
+        this.pointsEvent(player, type);
         var gameEvent = this.store.createRecord('gameEvent', {
           eventCode: type,
           eventTime: time,

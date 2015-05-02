@@ -3,7 +3,7 @@
     <legend>
       {{model.homeTeam.name}}
     </legend>
-    <div class="big-text">34</div>
+    <div class="big-text">{{points.home}}</div>
   </div>
   <div class="col-md-2">
     {{game-timer
@@ -13,7 +13,7 @@
   </div>
   <div class="col-md-2">
     <legend>{{model.awayTeam.name}}</legend>
-    <div class="big-text">28</div>
+    <div class="big-text">{{points.away}}</div>
   </div>
   <div class="col-md-2 pull-right">
     {{#if model.isStarted}}

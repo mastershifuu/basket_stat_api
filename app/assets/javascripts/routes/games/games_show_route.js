@@ -12,5 +12,6 @@ App.GamesShowRoute = Ember.Route.extend({
       Ember.Object.create({home: null, away: null})
     ]);
     controller.set('inGamePlayers', inGamePlayers);
+    controller.set('points', { home: 0, away: 0 });
   }
 });
