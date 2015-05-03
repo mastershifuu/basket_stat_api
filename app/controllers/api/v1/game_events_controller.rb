@@ -12,7 +12,7 @@ module Api
       def create
         @event = GameEvent.new(game_event_params)
         if @event.save
-          respond_with @event, status: :created
+          render json: @event, status: :created
         else
           render json: @event.errors, status: :unprocessable_entity
         end

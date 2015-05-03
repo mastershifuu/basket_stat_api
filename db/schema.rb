@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415180219) do
+ActiveRecord::Schema.define(version: 20150426085918) do
 
-  create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
+    t.text     "body",          limit: 65535
+    t.string   "resource_id",   limit: 255,   null: false
+    t.string   "resource_type", limit: 255,   null: false
+    t.integer  "author_id",     limit: 4
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,17 +28,17 @@ ActiveRecord::Schema.define(version: 20150415180219) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20150415180219) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "game_events", force: true do |t|
-    t.integer  "game_id"
-    t.integer  "player_id"
-    t.string   "event_code"
+  create_table "game_events", force: :cascade do |t|
+    t.integer  "game_id",    limit: 4
+    t.integer  "player_id",  limit: 4
+    t.integer  "event_code", limit: 4
     t.time     "event_time"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -58,20 +58,20 @@ ActiveRecord::Schema.define(version: 20150415180219) do
   add_index "game_events", ["game_id"], name: "index_game_events_on_game_id", using: :btree
   add_index "game_events", ["player_id"], name: "index_game_events_on_player_id", using: :btree
 
-  create_table "games", force: true do |t|
+  create_table "games", force: :cascade do |t|
     t.date     "date"
-    t.integer  "home_team_id"
-    t.integer  "away_team_id"
+    t.integer  "home_team_id", limit: 4
+    t.integer  "away_team_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "timer"
+    t.integer  "timer",        limit: 4
     t.datetime "started_at"
     t.datetime "finished_at"
   end
 
-  create_table "player_times", force: true do |t|
-    t.integer  "game_id"
-    t.integer  "player_id"
+  create_table "player_times", force: :cascade do |t|
+    t.integer  "game_id",    limit: 4
+    t.integer  "player_id",  limit: 4
     t.time     "in_time"
     t.time     "out_time"
     t.datetime "created_at"
@@ -81,63 +81,63 @@ ActiveRecord::Schema.define(version: 20150415180219) do
   add_index "player_times", ["game_id"], name: "index_player_times_on_game_id", using: :btree
   add_index "player_times", ["player_id"], name: "index_player_times_on_player_id", using: :btree
 
-  create_table "players", force: true do |t|
-    t.integer  "team_id"
-    t.string   "first_name"
-    t.string   "last_name"
+  create_table "players", force: :cascade do |t|
+    t.integer  "team_id",    limit: 4
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
     t.date     "birth_date"
-    t.integer  "height"
-    t.integer  "weight"
-    t.integer  "number"
+    t.integer  "height",     limit: 4
+    t.integer  "weight",     limit: 4
+    t.integer  "number",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
+    t.integer  "position",   limit: 4
   end
 
-  create_table "statistics", force: true do |t|
-    t.integer "player_id"
-    t.integer "game_id"
-    t.integer "team_id"
+  create_table "statistics", force: :cascade do |t|
+    t.integer "player_id",            limit: 4
+    t.integer "game_id",              limit: 4
+    t.integer "team_id",              limit: 4
     t.time    "played_time"
-    t.integer "points"
-    t.integer "free_throw_attempts"
-    t.integer "free_throw_made"
-    t.decimal "free_throw_percent",   precision: 10, scale: 0
-    t.integer "field_goal_attempts"
-    t.integer "field_goal_made"
-    t.decimal "field_goal_percent",   precision: 10, scale: 0
-    t.integer "three_point_attempts"
-    t.integer "three_point_made"
-    t.decimal "three_point_percent",  precision: 10, scale: 0
-    t.integer "assists"
-    t.integer "blockshots"
-    t.integer "offencive_rebounds"
-    t.integer "deffencive_rebounds"
-    t.integer "losses"
-    t.integer "steels"
-    t.integer "fouls"
-    t.integer "fouls_commited"
-    t.decimal "efficiency",           precision: 10, scale: 0
+    t.integer "points",               limit: 4
+    t.integer "free_throw_attempts",  limit: 4
+    t.integer "free_throw_made",      limit: 4
+    t.decimal "free_throw_percent",             precision: 10
+    t.integer "field_goal_attempts",  limit: 4
+    t.integer "field_goal_made",      limit: 4
+    t.decimal "field_goal_percent",             precision: 10
+    t.integer "three_point_attempts", limit: 4
+    t.integer "three_point_made",     limit: 4
+    t.decimal "three_point_percent",            precision: 10
+    t.integer "assists",              limit: 4
+    t.integer "blockshots",           limit: 4
+    t.integer "offencive_rebounds",   limit: 4
+    t.integer "deffencive_rebounds",  limit: 4
+    t.integer "losses",               limit: 4
+    t.integer "steels",               limit: 4
+    t.integer "fouls",                limit: 4
+    t.integer "fouls_commited",       limit: 4
+    t.decimal "efficiency",                     precision: 10
   end
 
-  create_table "teams", force: true do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "teams", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

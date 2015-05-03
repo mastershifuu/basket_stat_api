@@ -3,12 +3,17 @@
     <legend>
       {{model.homeTeam.name}}
     </legend>
-    <div class="big-text">34</div>
+    <div class="big-text">{{points.home}}</div>
   </div>
-  <div class="col-md-2">{{game-timer currentTime=timerValue startDisabled=canNotStart action='gameStarted'}}</div>
+  <div class="col-md-2">
+    {{game-timer
+      currentTime=timerValue
+      startDisabled=canNotStart
+      action='gameStarted'}}
+  </div>
   <div class="col-md-2">
     <legend>{{model.awayTeam.name}}</legend>
-    <div class="big-text">28</div>
+    <div class="big-text">{{points.away}}</div>
   </div>
   <div class="col-md-2 pull-right">
     {{#if model.isStarted}}
@@ -25,7 +30,10 @@
       <thead>
       <tr>
         <th>{{model.homeTeam.name}}</th>
-        <th>Actions</th>
+        <th>Actions Home</th>
+        <th>{{model.awayTeam.name}}</th>
+        <th>Actions Away</th>
+
       </tr>
       </thead>
       <tbody>
@@ -34,53 +42,32 @@
           <td>
             {{view 'select'
               class="form-control"
-              content=availableHomePlayers
+              content=filteredHomePlayers
               optionValuePath="content.id"
               optionLabelPath="content.number"
-              name=player.home.id
+              optionDisabledPath="content.selected"
               selection=player.home
               prompt='Select player...'
             }}
           </td>
           <td>
-
-              <div class="btn-group " role="group">
-                <button type="button" class="btn btn-default btn-success" {{action 'gameEvent' player.home 'ftm'}} >
-                  FTM
-                </button>
-                <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'fta'}} >FTA</button>
-                <button type="button" class="btn btn-default btn-success" {{action 'gameEvent' player.home 'fgm'}} >
-                  FGM
-                </button>
-                <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'fga'}} >FGA</button>
-                <button type="button" class="btn btn-default btn-success" {{action 'gameEvent' player.home 'fgm3'}} >
-                  FGM3
-                </button>
-                <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'fga3'}} >FGA3</button>
-                <button type="button" class="btn btn-default btn-warning" {{action 'gameEvent' player.home 'ast'}} >AST
-                </button>
-              </div>
-
-                <div class="btn-group" role="group">
-
-                  <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'blk'}} >BLK
-                  </button>
-                  <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'orb'}} >ORB
-                  </button>
-                  <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'drb'}} >DRB
-                  </button>
-                  <button type="button" class="btn btn-default btn-danger" {{action 'gameEvent' player.home 'los'}} >
-                    LOS
-                  </button>
-                  <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'stl'}} >STL
-                  </button>
-                  <button type="button" class="btn btn-default btn-danger" {{action 'gameEvent' player.home 'pf'}} >
-                    PF
-                  </button>
-                  <button type="button" class="btn btn-default" {{action 'gameEvent' player.home 'pfc'}} >PFC
-                  </button>
-                </div>
+            {{game-buttons player=player.home action='gameEvent'}}
           </td>
+          <td>
+            {{view 'select'
+            class="form-control"
+            content=filteredAwayPlayers
+            optionValuePath="content.id"
+            optionLabelPath="content.number"
+            optionDisabledPath="content.selected"
+            selection=player.away
+            prompt='Select player...'
+            }}
+          </td>
+          <td>
+            {{game-buttons player=player.away action='gameEvent'}}
+          </td>
+
         </tr>
       {{/each}}
 
