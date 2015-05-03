@@ -42,13 +42,15 @@ App.GameTimerComponent = Ember.Component.extend({
     },
 
     pause: function(){
+      //Ember.Logger.info('pause timer: ', this.get('paused'));
       if (this.get('paused') == false) {
-        this.set('paused', true);
+        //Ember.Logger.info('set pause');
+        this.toggleProperty('paused');
         Ember.run.cancel(this.get('timeout'));
         this.set('pauseTime', this.get('mils'));
-
       } else {
-        this.set('paused', false);
+        //Ember.Logger.info('unpause');
+        this.toggleProperty('paused');
         this.startTimer();
       }
     },
